@@ -34,5 +34,5 @@ const createUser = async ({ firstName, lastName, emailId, age }) => {
     } catch (error) {
         throw new Error(error.message)
     }
-}
+}   
 
