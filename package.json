@@ -14,7 +14,8 @@
     "@grpc/grpc-js": "1.9.0",
     "@grpc/proto-loader": "^0.7.15",
     "mongoose": "^8.16.2",
-    "nanoid": "^5.1.5"
+    "nanoid": "^5.1.5",
+    "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "@bufbuild/protoc-gen-es": "^2.6.0"
