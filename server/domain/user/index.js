@@ -3,16 +3,18 @@ import mongoose from "mongoose";
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     emailId: {
         type: String,
         trim: true,
-        required: true,
+        required: [true, 'Email is required'],
         unique: true,
         lowercase: true
     },
@@ -25,15 +27,12 @@ const userSchema = mongoose.Schema({
 const userModel = mongoose.model("user", userSchema)
 
 const createUser = async ({ firstName, lastName, emailId, age }) => {
-    try {
-        const newUser = await userModel.create({ firstName, lastName, emailId, age })
-        if (!newUser) {
-            throw new Error("Couldn't create the user")
-        }
-        return newUser
-    } catch (error) {
-        throw new Error(error.message)
+
+    const newUser = await userModel.create({ firstName, lastName, emailId, age })
+    if (!newUser) {
+        throw new Error("Couldn't create the user")
     }
+    return newUser
 }
 
 const updateUser = async ({ id, age }) => {

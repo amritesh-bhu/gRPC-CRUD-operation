@@ -17,14 +17,15 @@ message User {
     string id = 1;
     string firstName = 2;
     string lastName = 3;
-    string emialId = 4;
+    string emailId = 4;
     int32 age = 5; 
 }
 
 message CreateUserRequest { 
     string firstName = 1;
     string lastName = 2;
-    int32 age = 3;
+    string emailId = 3;
+    int32 age = 4;
 }
 
 message UpdateUserRequest { 

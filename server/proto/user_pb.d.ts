@@ -42,9 +42,9 @@ export declare type User = Message<"users.User"> & {
   lastName: string;
 
   /**
-   * @generated from field: string emialId = 4;
+   * @generated from field: string emailId = 4;
    */
-  emialId: string;
+  emailId: string;
 
   /**
    * @generated from field: int32 age = 5;
@@ -73,7 +73,12 @@ export declare type CreateUserRequest = Message<"users.CreateUserRequest"> & {
   lastName: string;
 
   /**
-   * @generated from field: int32 age = 3;
+   * @generated from field: string emailId = 3;
+   */
+  emailId: string;
+
+  /**
+   * @generated from field: int32 age = 4;
    */
   age: number;
 };
