@@ -3,10 +3,8 @@ import grpc from "@grpc/grpc-js"
 
 const rpcCreateUser = async (call, callback) => {
     try {
-        console.log(call.request)
         const { firstName, lastName, emailId, age } = call.request
         const user = await userDomain.createUser({ firstName, lastName, emailId, age })
-        console.log(user)
         callback(null, {
             id: user._id,
             firstName: user.firstName,
@@ -16,6 +14,14 @@ const rpcCreateUser = async (call, callback) => {
         })
     } catch (error) {
         callback({ code: grpc.status.INTERNAL, details: error.message });
+    }
+}
+
+const rpcUpdateUser = async (call, callback) => {
+    try{
+
+    }catch(err){
+
     }
 }
 
