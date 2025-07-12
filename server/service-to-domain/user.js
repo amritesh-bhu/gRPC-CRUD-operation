@@ -33,7 +33,24 @@ const rpcUpdateUser = async (call, callback) => {
     }
 }
 
+const rpcGetUserById = async (call, callback) => {
+    try {
+        const { id } = call.request
+        const user = await userDomain.getUserById({ id })
+        callback(null, {
+            id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            emailId: user.emailId,
+            age: user.age
+        })
+    } catch (error) {
+        callback({ code: grpc.status.code, details: error.message })
+    }
+}
+
 export const rpcMethod = {
     rpcCreateUser,
-    rpcUpdateUser
+    rpcUpdateUser,
+    rpcGetUserById
 }           

@@ -44,7 +44,18 @@ const updateUser = async ({ id, age }) => {
     return user
 }
 
+const getUserById = async ({ id }) => {
+
+    const user = await userModel.findOne({ _id: id })
+    if (!user) {
+        throw new Error('There is no user found for this id!!')
+    }
+
+    return user
+}
+
 export const userDomain = {
     createUser,
-    updateUser
+    updateUser,
+    getUserById
 }
