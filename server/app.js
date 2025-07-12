@@ -24,7 +24,8 @@ server.addService(usersProto.UserService.service, {
     CreateUser: rpcMethod.rpcCreateUser,
     UpdateUser: rpcMethod.rpcUpdateUser,
     GetUserById: rpcMethod.rpcGetUserById,
-    DeleteUser: rpcMethod.rpcDeleteUser
+    DeleteUser: rpcMethod.rpcDeleteUser,
+    GetUserList: rpcMethod.rpcGetUserList
 })
 
 server.bindAsync(`0.0.0.0:${HTTP_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {

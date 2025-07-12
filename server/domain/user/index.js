@@ -62,9 +62,18 @@ const deleteUser = async ({ id }) => {
     return true
 }
 
+const getUserList = async () => {
+    const users = await userModel.find()
+    if (users.length == 0) {
+        throw new Error('There is no user found in your database!!!')
+    }
+    return users
+}
+
 export const userDomain = {
     createUser,
     updateUser,
     getUserById,
-    deleteUser
+    deleteUser,
+    getUserList
 }
