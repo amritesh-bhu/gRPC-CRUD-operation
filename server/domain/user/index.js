@@ -54,8 +54,17 @@ const getUserById = async ({ id }) => {
     return user
 }
 
+const deleteUser = async ({ id }) => {
+    const user = await userModel.findByIdAndDelete({ _id: id })
+    if (!user) {
+        return false
+    }
+    return true
+}
+
 export const userDomain = {
     createUser,
     updateUser,
-    getUserById
+    getUserById,
+    deleteUser
 }

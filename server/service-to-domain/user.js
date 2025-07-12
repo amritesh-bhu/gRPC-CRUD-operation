@@ -49,8 +49,19 @@ const rpcGetUserById = async (call, callback) => {
     }
 }
 
+const rpcDeleteUser = async (call, callback) => {
+    try {
+        const { id } = call.request
+        const isDeleted = await userDomain.deleteUser({ id })
+        callback(null, { success: isDeleted })
+    } catch (error) {
+        callback({ code: grpc.status.code, details: error.message })
+    }
+}
+
 export const rpcMethod = {
     rpcCreateUser,
     rpcUpdateUser,
-    rpcGetUserById
+    rpcGetUserById,
+    rpcDeleteUser
 }           
