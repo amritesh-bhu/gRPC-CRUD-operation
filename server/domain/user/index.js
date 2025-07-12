@@ -36,15 +36,12 @@ const createUser = async ({ firstName, lastName, emailId, age }) => {
 }
 
 const updateUser = async ({ id, age }) => {
-    try {
-        const user = await userModel.findByIdAndUpdate({ _id: id }, { age })
-        if (!user) {
-            throw new Error("Couldn't update the user!!")
-        }
-        return user
-    } catch (error) {
-        throw new Error(error.message)
+
+    const user = await userModel.findByIdAndUpdate({ _id: id }, { age }, { returnDocument: 'after' })
+    if (!user) {
+        throw new Error("Couldn't update the user!!")
     }
+    return user
 }
 
 export const userDomain = {

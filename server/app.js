@@ -21,7 +21,8 @@ const usersProto = grpc.loadPackageDefinition(packageDefinition).users;
 
 const server = new grpc.Server();
 server.addService(usersProto.UserService.service, {
-    CreateUser: rpcMethod.rpcCreateUser
+    CreateUser: rpcMethod.rpcCreateUser,
+    UpdateUser: rpcMethod.rpcUpdateUser,
 })
 
 server.bindAsync(`0.0.0.0:${HTTP_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
